@@ -12,7 +12,20 @@ class XylophoneApp extends StatelessWidget {
     final player = AudioCache();
     player.play('note$soundnum.wav');
   }
-
+  
+  Expanded buildKey(int n1){
+    int cv = 800 - n1*100;
+    return Expanded(
+                child: FlatButton(
+                  color: Colors.blueGrey[cv],
+                  onPressed: () {
+                    clickplay(n1);
+                  },
+                  child: Text('sound$n1'),
+                ),
+              );
+  }
+  
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,61 +35,15 @@ class XylophoneApp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Expanded(
-                child: FlatButton(
-                  color: Colors.blueGrey[800],
-                  onPressed: () {
-                    clickplay(1);
-                  },
-                  child: Text('sound1'),
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.blueGrey[700],
-                  onPressed: () {
-                    clickplay(2);
-                  },
-                  child: Text('sound2'),
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.blueGrey[600],
-                  onPressed: () {
-                    clickplay(3);
-                  },
-                  child: Text('sound3'),
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.blueGrey[500],
-                  onPressed: () {
-                    clickplay(4);
-                  },
-                  child: Text('sound4'),
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.blueGrey[400],
-                  onPressed: () {
-                    clickplay(5);
-                  },
-                  child: Text('sound5'),
-                ),
-              ),
-              Expanded(
-                child: FlatButton(
-                  color: Colors.blueGrey[300],
-                  onPressed: () {
-                    clickplay(6);
-                  },
-                  child: Text('sound6'),
-                ),
-              ),
-            ],
+              buildKey(1),
+              buildKey(2),
+              buildKey(3),
+              buildKey(4),
+              buildKey(5), 
+              buildKey(6), 
+              buildKey(7), 
+              buildKey(7), 
+              ],
           ),
         ),
       ),
